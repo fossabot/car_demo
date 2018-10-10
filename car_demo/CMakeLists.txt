@@ -9,15 +9,17 @@ set (PRIUSCUP_VERSION_FULL ${PRIUSCUP_MAJOR_VERSION}.${PRIUSCUP_MINOR_VERSION}.$
 find_package(catkin REQUIRED COMPONENTS
   gazebo_ros
   prius_msgs
+  ouster_description
 )
 
-find_package(gazebo 8 REQUIRED)
+#find_package(gazebo 8 REQUIRED)
+find_package(gazebo 9 REQUIRED)
 find_package(ignition-msgs0 REQUIRED)
 
 catkin_package(
  # INCLUDE_DIRS include
  # LIBRARIES gazebo_radar_plugin
- CATKIN_DEPENDS gazebo_ros prius_msgs
+ CATKIN_DEPENDS gazebo_ros prius_msgs ouster_description
 #  DEPENDS system_lib
 )
 
@@ -27,14 +29,14 @@ add_library(PriusHybridPlugin SHARED plugins/PriusHybridPlugin.cc)
 target_link_libraries(PriusHybridPlugin ${GAZEBO_LIBRARIES} ${IGNITION-MSGS_LIBRARIES})
 add_dependencies(PriusHybridPlugin ${catkin_EXPORTED_TARGETS})
 
-add_library(gazebo_ros_block_laser SHARED plugins/gazebo_ros_block_laser.cpp)
-target_link_libraries(gazebo_ros_block_laser ${GAZEBO_LIBRARIES} ${IGNITION-MSGS_LIBRARIES})
-add_dependencies(gazebo_ros_block_laser ${catkin_EXPORTED_TARGETS})
+#add_library(gazebo_ros_block_laser SHARED plugins/gazebo_ros_block_laser.cpp)
+#target_link_libraries(gazebo_ros_block_laser ${GAZEBO_LIBRARIES} ${IGNITION-MSGS_LIBRARIES})
+#add_dependencies(gazebo_ros_block_laser ${catkin_EXPORTED_TARGETS})
 
 catkin_install_python(PROGRAMS nodes/joystick_translator
                       DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
-install(TARGETS PriusHybridPlugin gazebo_ros_block_laser
+install(TARGETS PriusHybridPlugin #gazebo_ros_block_laser
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
