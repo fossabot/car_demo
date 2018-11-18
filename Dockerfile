@@ -1,37 +1,43 @@
-FROM osrf/ros:kinetic-desktop
+FROM ros:melodic-perception-bionic
 
-LABEL com.nvidia.volumes.needed="nvidia_driver"
-ENV PATH /usr/local/nvidia/bin:${PATH}
-ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
+ENV DEBIAN_FRONTEND noninteractive
+ENV TERM xterm
+
+# Some packages copied from:
+# https://gitlab.com/nvidia/opengl/blob/ubuntu16.04/base/Dockerfile
 
 RUN apt-get update \
- && apt-get install -y \
+  && apt-get dist-upgrade -y \
+  && apt-get install -y --no-install-recommends \
+    git \
+    build-essential \
+    dialog \
+    make \
+    gcc \
+    g++ \
+    locales \
     wget \
-    lsb-release \
+    software-properties-common \
     sudo \
-    mesa-utils \
- && apt-get clean
+    libgl1-mesa-glx \
+    libgl1-mesa-dri \
+    libxau6 \
+    libxdmcp6 \
+    libxcb1 \
+    libxext6 \
+    libx11-6 \
+    tmux \
+    eog \
+    jstest-gtk \
+    mercurial \
+ && rm -rf /var/lib/apt/lists/*
 
+# nvidia-container-runtime
+ENV NVIDIA_VISIBLE_DEVICES \
+        ${NVIDIA_VISIBLE_DEVICES:-all}
+ENV NVIDIA_DRIVER_CAPABILITIES \
+        ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics,compat32,utility
 
-# Get gazebo binaries
-RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list \
- && wget http://packages.osrfoundation.org/gazebo.key -O - | apt-key add - \
- && apt-get update \
- && apt-get install -y \
-    gazebo8 \
-    ros-kinetic-gazebo8-ros-pkgs \
-    ros-kinetic-fake-localization \
-    ros-kinetic-joy \
- && apt-get clean
+ADD /scripts /scripts
 
-
-RUN mkdir -p /tmp/workspace/src
-COPY prius_description /tmp/workspace/src/prius_description
-COPY prius_msgs /tmp/workspace/src/prius_msgs
-COPY car_demo /tmp/workspace/src/car_demo
-RUN /bin/bash -c 'cd /tmp/workspace \
- && source /opt/ros/kinetic/setup.bash \
- && catkin_make'
-
-
-CMD ["/bin/bash", "-c", "source /opt/ros/kinetic/setup.bash && source /tmp/workspace/devel/setup.bash && roslaunch car_demo demo.launch"]
+RUN bash /scripts/install_scripts_for_docker.bash
