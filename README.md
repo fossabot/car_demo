@@ -1,3 +1,9 @@
+#[![Build Status](https://travis-ci.org/kylemanna/docker-openvpn.svg)](https://travis-ci.org/kylemanna/docker-openvpn)
+[![Docker Stars](https://img.shields.io/docker/stars/wilselby/car_demo.svg)](https://hub.docker.com/r/wilselby/car_demo/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/wilselby/car_demo.svg)](https://hub.docker.com/r/wilselby/car_demo/)
+#[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkylemanna%2Fdocker-openvpn.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkylemanna%2Fdocker-openvpn?ref=badge_shield)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/wilselby/ouster_example/blob/master/LICENSE)
+
 # Demo of Prius in ROS/GAZEBO
 This project is a fork of the [OSRF Car Demo](https://github.com/osrf/car_demo) and also includes the SimCity model from [here](https://bitbucket.org/osrf/citysim/src/default/). 
 
