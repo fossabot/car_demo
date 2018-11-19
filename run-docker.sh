@@ -26,6 +26,7 @@ else
       bash
 fi
 
+
 # Check Joystick
 # ls /dev/input/j*
 #jstest-gtk

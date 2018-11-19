@@ -5,12 +5,12 @@
 # Demo of Prius in ROS/GAZEBO
 This project is a fork of the [OSRF Car Demo](https://github.com/osrf/car_demo) and also includes the SimCity model from [here](https://bitbucket.org/osrf/citysim/src/default/). 
 
-This is a simulation of a Prius in [gazebo 8](http://gazebosim.org) with sensor data being published using [ROS kinetic](http://wiki.ros.org/kinetic/Installation)
+This is a simulation of a Prius in [gazebo 8](http://gazebosim.org) with sensor data being published using [ROS kinetic](http://wiki.ros.org/kinetic/Installation).
 
 The car's throttle, brake, steering, and gear shifting are controlled by publishing a ROS message.
 A ROS node allows driving with a gamepad or joystick.
 
-The model has been updated to contain an Ouster OS-1-64 LIDAR sensor using a fork of Ouster's open source client [here] (https://github.com/wilselby/ouster_example)
+The model has been updated to contain an Ouster OS-1-64 LIDAR sensor using a fork of Ouster's open source client [here](https://github.com/wilselby/ouster_example).
 
 # Video + Pictures
 
@@ -45,6 +45,16 @@ $ ./run-docker.sh
 # Running
 
 Connect a game controller to your PC.
+
+Source the catkin workspace
+```
+$ source ~/catkin_ws/devel/setup.bash
+```
+
+Source setup file
+```
+$ source /usr/local/share/citysim-0/setup.sh
+```
 
 ## Run City demo
 You can launch the MCity world in Gazebo with a Pruis as well as RVIZ for visualizations with the following command:

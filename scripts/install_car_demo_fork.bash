@@ -23,6 +23,7 @@ sudo cp -R $HOME/catkin_ws/src/car_demo/car_demo/models/* /usr/share/gazebo-9/mo
 
 # Build OSRF City Sim
 echo "Install OSRF City Sim package..."
+cd /
 hg clone https://bitbucket.org/osrf/citysim
 cd citysim
 mkdir build
@@ -30,6 +31,6 @@ cd build
 cmake ..
 make install
 
-#Source setup file
+# Source setup file
 source /usr/local/share/citysim-0/setup.sh
 
