@@ -42,4 +42,6 @@ ADD /scripts /scripts
 
 RUN bash /scripts/install_scripts_for_docker.bash
 
-ENTRYPOINT ["/scripts/entrypoint.bash"]
+#ENTRYPOINT ["/scripts/entrypoint.bash"]
+
+#RUN ["chmod", "+x", "/scripts/entrypoint.bash"]

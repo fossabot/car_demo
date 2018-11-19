@@ -36,6 +36,7 @@ matrix:
 install:
   - git clone https://github.com/ros-industrial/industrial_ci.git .ci_config
 script: 
+  - scripts/travis_dependencies.bash
   - source .ci_config/travis.sh
 #  - bash <(curl -s https://codecov.io/bash)
 #  - source ./travis.sh  # Enable this when you have a package-local script 
