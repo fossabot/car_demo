@@ -1,6 +1,22 @@
 #!/bin/bash
 set -e
 
+# Set Environment Variables
+export UBUNTU_CODENAME=$(lsb_release -s -c)
+case $UBUNTU_CODENAME in
+  trusty)
+    export ROS_DISTRO=indigo;;
+  xenial)
+    export ROS_DISTRO=kinetic;;
+  bionic)
+    export ROS_DISTRO=melodic;;
+  *)
+    echo "Unsupported version of Ubuntu detected. Only trusty (14.04.*), xenial (16.04.*), and bionic (18.04.*) are currently supported."
+    exit 1
+esac
+export REPO_DIR=$(dirname "$SCRIPT_DIR")
+export CATKIN_DIR="$HOME/catkin_ws"
+
 # Install ign_msg0 for citysim support
 hg clone https://bitbucket.org/ignitionrobotics/ign-math /tmp/ign-math
 cd /tmp/ign-math/
@@ -23,6 +39,7 @@ sudo make install
 # Install ouster_example
 cd /root/catkin_ws/src
 git clone https://github.com/wilselby/ouster_example.git
+
 # Building the Sample ROS Node
 echo "building the sample ROS node"
 cd /root/catkin_ws
