@@ -17,6 +17,7 @@ esac
 export REPO_DIR=$(dirname "$SCRIPT_DIR")
 export CATKIN_DIR="$HOME/catkin_ws"
 
+sudo apt-get install libignition-common libignition-fuel-tools1-1 libignition-math4 libignition-math4-dev libignition-msgs libignition-msgs-dev libignition-transport4 libprotobuf10 libprotoc10 -y
 # Install ign_msg0 for citysim support
 hg clone https://bitbucket.org/ignitionrobotics/ign-math /tmp/ign-math
 cd /tmp/ign-math/
