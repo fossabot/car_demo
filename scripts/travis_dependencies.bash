@@ -18,8 +18,8 @@ export REPO_DIR=$(dirname "$SCRIPT_DIR")
 export CATKIN_DIR="$HOME/catkin_ws"
 
 # Install dependencies
-sudo apt update
-sudo apt-get install libignition-common libignition-fuel-tools1-1 libignition-math4 libignition-math4-dev libignition-msgs libignition-msgs-dev libignition-transport4 libprotobuf10 libprotoc10 -y
+apt-get update
+apt-get install libignition-common libignition-fuel-tools1-1 libignition-math4 libignition-math4-dev libignition-msgs libignition-msgs-dev libignition-transport4 libprotobuf10 libprotoc10 -y
 
 # Install ign_msg0 for citysim support
 hg clone https://bitbucket.org/ignitionrobotics/ign-math /tmp/ign-math
@@ -29,7 +29,7 @@ mkdir build
 cd build
 cmake ..
 make -j4
-sudo make install
+make install
 
 hg clone https://bitbucket.org/ignitionrobotics/ign-msgs /tmp/ign-msgs
 cd /tmp/ign-msgs
@@ -38,7 +38,7 @@ mkdir build
 cd build
 cmake ..
 make -j4
-sudo make install
+make install
 
 # Install ouster_example
 cd /root/catkin_ws/src
@@ -51,7 +51,7 @@ catkin_make
 echo "built the sample ROS node"
 
 # Copy model files into Gazebo directory
-sudo cp -R /root/catkin_ws/src/car_demo/car_demo/models/* /usr/share/gazebo-9/models
+cp -R /root/catkin_ws/src/car_demo/car_demo/models/* /usr/share/gazebo-9/models
 
 # Build OSRF City Sim
 echo "Install OSRF City Sim package..."
@@ -65,7 +65,7 @@ echo "Installed OSRF City Sim"
 
 # Setup ROS Environment
 source /opt/ros/$ROS_DISTRO/setup.bash
-source ~/catkin_ws/devel/setup.bash
+source /root/catkin_ws/devel/setup.bash
 source /usr/local/share/citysim-0/setup.sh
 
 
