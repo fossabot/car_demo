@@ -47,7 +47,7 @@ git clone https://github.com/wilselby/ouster_example.git
 # Building the Sample ROS Node
 echo "building the sample ROS node"
 cd /root/catkin_ws
-catkin_make
+catkin build
 echo "built the sample ROS node"
 
 # Copy model files into Gazebo directory

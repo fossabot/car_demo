@@ -30,11 +30,10 @@ env:
 #    - ROS_DISTRO="lunar" ROS_REPO=ros-shadow-fixed DOCKER_BASE_IMAGE=ros:lunar-ros-core
 #    - ROS_DISTRO="melodic" ROS_REPO=ros DOCKER_BASE_IMAGE=ros:melodic-ros-core 
 #    - ROS_DISTRO="melodic" ROS_REPO=ros-shadow-fixed DOCKER_BASE_IMAGE=ros:melodic-ros-core
-     - ROS_DISTRO="melodic" ROS_REPO=ros DOCKER_BASE_IMAGE=ros:melodic-ros-core ADDITIONAL_DEBS="build-essential python-catkin-tools python-pip ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher ros-melodic-robot-state-publisher ros-melodic-xacro ros-melodic-controller-manager ros-melodic-joint-state-controller ros-melodic-ros-control ros-melodic-joy ros-melodic-fake-localization libignition-common libignition-fuel-tools1-1 libignition-math4 libignition-math4-dev libignition-msgs libignition-msgs-dev libignition-transport4" 
+     - ROS_DISTRO="melodic" ROS_REPO=ros DOCKER_BASE_IMAGE=ros:melodic-ros-core ADDITIONAL_DEBS="build-essential python-catkin-tools python-pip ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher ros-melodic-robot-state-publisher ros-melodic-xacro ros-melodic-controller-manager ros-melodic-joint-state-controller ros-melodic-ros-control ros-melodic-joy ros-melodic-fake-localization ros-melodic-pcl-ros libignition-common libignition-fuel-tools1-1 libignition-math4 libignition-math4-dev libignition-msgs libignition-msgs-dev libignition-transport4" 
 matrix:
   allow_failures:
-#     - ROS_DISTRO="melodic" ROS_REPO=ros DOCKER_BASE_IMAGE=ros:melodic-ros-core ADDITIONAL_DEBS="build-essential python-catkin-tools python-pip ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher ros-melodic-robot-state-publisher ros-melodic-xacro ros-melodic-controller-manager ros-melodic-joint-state-controller ros-melodic-ros-control ros-melodic-joy ros-melodic-fake-localization libignition-common libignition-fuel-tools1-1 libignition-math4 libignition-math4-dev libignition-msgs libignition-msgs-dev libignition-transport4 libprotobuf10 libprotoc10"
-     
+#     - ROS_DISTRO="melodic" ROS_REPO=ros DOCKER_BASE_IMAGE=ros:melodic-ros-core ADDITIONAL_DEBS="build-essential python-catkin-tools python-pip ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher ros-melodic-robot-state-publisher ros-melodic-xacro ros-melodic-controller-manager ros-melodic-joint-state-controller ros-melodic-ros-control ros-melodic-joy ros-melodic-fake-localization libignition-common libignition-fuel-tools1-1 libignition-math4 libignition-math4-dev libignition-msgs libignition-msgs-dev libignition-transport4 libprotobuf10 libprotoc10"     
 install:
   - git clone https://github.com/ros-industrial/industrial_ci.git .ci_config
 script:
